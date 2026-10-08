@@ -1,0 +1,92 @@
+# Copier template: full-stack web app (FastAPI + React) in the layout crossbill uses.
+# Render with `uvx copier copy --trust gh:<org>/ai-web-project-template my-app`.
+# See README.md for the questions, the update flow and how the template is tested.
+
+_min_copier_version: "9.4.0"
+_subdirectory: template
+_templates_suffix: .jinja
+_answers_file: .copier-answers.yml
+_preserve_symlinks: true
+
+project_name:
+  type: str
+  help: Human-readable project name (shown in the UI and API docs)
+  default: My App
+
+project_slug:
+  type: str
+  help: Machine name - lowercase letters, digits and dashes. Names the packages, containers and database
+  default: "{{ project_name | lower | replace(' ', '-') }}"
+  validator: >-
+    {% if not (project_slug | regex_search('^[a-z][a-z0-9-]*$')) %}
+    Use lowercase letters, digits and dashes, starting with a letter.
+    {% endif %}
+
+description:
+  type: str
+  help: One-line description
+  default: "{{ project_name }} web application"
+
+author_name:
+  type: str
+  help: Author or team name
+  default: Your Name
+
+author_email:
+  type: str
+  help: Author email
+  default: you@example.com
+
+ui:
+  type: str
+  help: Frontend component library
+  choices:
+    Material UI (MUI): mui
+    Tailwind CSS + shadcn/ui: shadcn
+  default: mui
+
+# Derived values: never asked, available to every template file.
+db_name:
+  type: str
+  default: "{{ project_slug | replace('-', '_') }}"
+  when: false
+
+python_version:
+  type: str
+  default: "3.13"
+  when: false
+
+node_version:
+  type: str
+  default: "24"
+  when: false
+
+# Lockfiles, the OpenAPI contract and the generated client are build outputs.
+# The template never ships them; the tasks below produce them, so `copier update`
+# never has to merge them either.
+_tasks:
+  - command: git init -b main
+    when: "{{ _copier_operation == 'copy' }}"
+  - command: npm install --no-audit --no-fund
+  - command: uv lock --directory backend
+  - command: uv sync --directory backend
+  - command: make api-client
+  - command: npm run routes:generate --workspace=frontend
+  - command: npx msw init frontend/tests/public --no-save
+    when: "{{ _copier_operation == 'copy' }}"
+
+_message_after_copy: |
+  {{ project_name }} is ready in {{ _copier_conf.dst_path }}.
+
+  Next steps:
+    cd {{ _copier_conf.dst_path }}
+    docker compose -f docker-compose.dev.yml up -d   # Postgres for development
+    make migrate                                     # create the tables
+    make dev-app                                     # backend on :8000
+    npm run dev --workspace=frontend                 # frontend on :5173
+
+  Then commit the result: git add -A && git commit -m "Generate from template"
+
+_message_after_update: |
+  Template update applied. Review the diff, resolve any conflict markers or
+  *.rej files, run `make check`, and commit.
