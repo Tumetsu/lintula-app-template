@@ -2,6 +2,10 @@
 	test test-backend test-frontend lint lint-fix format lint-frontend deps-check deps-graph \
 	duplication-check check docker-build docker-up template-update
 
+# Compose v2 as a Docker CLI plugin (`docker compose`), or the standalone
+# binary (`docker-compose`) that Homebrew and some Linux packages install.
+COMPOSE ?= $(shell docker compose version >/dev/null 2>&1 && echo "docker compose" || echo docker-compose)
+
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}'
 
@@ -12,10 +16,10 @@ install: ## Install backend and frontend dependencies
 # Development
 
 db-up: ## Start the development Postgres in Docker
-	docker compose -f docker-compose.dev.yml up -d
+	$(COMPOSE) -f docker-compose.dev.yml up -d --wait
 
 db-down: ## Stop the development Postgres
-	docker compose -f docker-compose.dev.yml down
+	$(COMPOSE) -f docker-compose.dev.yml down
 
 dev-app: ## Run the backend dev server on :8000
 	cd backend && uv run uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
@@ -84,7 +88,7 @@ docker-build: ## Build the production image
 	docker build -t $(notdir $(CURDIR)):latest .
 
 docker-up: ## Run the app and Postgres with docker compose (http://localhost:8000)
-	docker compose up --build
+	$(COMPOSE) up --build
 
 # Template
 
