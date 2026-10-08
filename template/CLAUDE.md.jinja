@@ -78,6 +78,11 @@ either is stale.
   (add more with `npx shadcn@latest add <name>` from `frontend/`); theme tokens
   are CSS variables in `src/index.css`.
 {%- endif %}
+- Two TypeScript versions are installed on purpose. `frontend/` depends on
+  TypeScript 7, which `tsc` (type-check, build) runs on. The root `package.json`
+  pins TypeScript 6, hoisted for tools that load the TypeScript JS API
+  (typescript-eslint, knip, orval): typescript-eslint supports only
+  `<6.1.0` so far. Drop the root pin once it supports 7.
 - Tests: a `.test.tsx` renders the whole app at a route through
   `renderApp` (`tests/harness/`) against MSW handlers (`tests/msw/`), in real
   Chromium. A request with no handler fails the test. Query by role and
