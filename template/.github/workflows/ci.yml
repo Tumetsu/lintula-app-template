@@ -157,7 +157,8 @@ jobs:
         run: npm run duplication-check
 
   # Builds the production image and smoke-tests it against a real Postgres:
-  # migrations run on start, the API answers, and the SPA is served.
+  # migrations run on start (the health check only answers once they have),
+  # and the SPA is served.
   docker:
     name: Docker image
     runs-on: ubuntu-latest
@@ -196,9 +197,6 @@ jobs:
             curl -fsS http://localhost:8000/health && break
             sleep 2
           done
-          curl -fsS -X POST http://localhost:8000/api/v1/notes \
-            -H 'Content-Type: application/json' -d '{"title": "smoke"}'
-          curl -fsS http://localhost:8000/api/v1/notes | grep -q smoke
           curl -fsS http://localhost:8000/ | grep -q '<div id="root">'
 
       - name: Container logs

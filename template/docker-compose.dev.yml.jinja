@@ -1,5 +1,6 @@
 # Postgres for local development. The backend and frontend run on the host:
 #   make db-up && make migrate && make dev-app
+# (`make migrate-new msg="initial schema"` first, on a fresh project)
 services:
   postgres:
     image: postgres:18

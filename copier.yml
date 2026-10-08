@@ -80,10 +80,11 @@ _message_after_copy: |
 
   Next steps:
     cd {{ _copier_conf.dst_path }}
-    docker compose -f docker-compose.dev.yml up -d   # Postgres for development
-    make migrate                                     # create the tables
-    make dev-app                                     # backend on :8000
-    npm run dev --workspace=frontend                 # frontend on :5173
+    make db-up                                 # Postgres for development
+    make migrate-new msg="initial schema"      # first migration, from your ORM models
+    make migrate                               # create the tables
+    make dev-app                               # backend on :8000
+    make dev-frontend                          # frontend on :5173
 
   Then commit the result: git add -A && git commit -m "Generate from template"
 

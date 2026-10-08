@@ -12,7 +12,7 @@ own domain. Generated projects can pull later template improvements with
 |---|---|
 | Backend | Python 3.13, FastAPI, async SQLAlchemy 2, Alembic, PostgreSQL, dependency-injector, structlog |
 | Architecture | DDD with hexagonal boundaries: `domain/`, `application/` (commands, queries, ports), `infrastructure/`, enforced by import-linter contracts; CQRS-lite read models |
-| Example module | `notes`: aggregate, command and query use cases, repository, query adapter, router, migration, API tests, and a frontend page |
+| Example module | `notes`: aggregate, command and query use cases, repository, query adapter, router, API tests, and a frontend page. No migrations: you generate the first one from your own models |
 | Frontend | Vite, React 19, TanStack Router (file-based) + TanStack Query, and your choice of **MUI** or **Tailwind CSS v4 + shadcn/ui** |
 | API contract | `backend/openapi.json` exported without a running server; orval generates typed TanStack Query hooks; CI fails when either is stale |
 | Quality | ruff, pyright (strict), import-linter, ESLint, Prettier, tsc, knip, dependency-cruiser, jscpd with ratchet thresholds, husky + lint-staged pre-commit |

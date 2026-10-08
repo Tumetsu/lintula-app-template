@@ -32,6 +32,25 @@ step "Backend"
   uv run pytest -q
 )
 
+if [[ -n "${CHECK_DATABASE_URL:-}" ]]; then
+  step "Initial migration (against $CHECK_DATABASE_URL)"
+  # What a new project's first step is: autogenerate from the models, apply,
+  # and the result must pass the same lint and format checks as the code.
+  (
+    cd backend
+    export DATABASE_URL="$CHECK_DATABASE_URL"
+    uv run alembic revision --autogenerate -m "initial schema"
+    uv run alembic upgrade head
+    uv run alembic check
+    uv run ruff check alembic/versions
+    uv run ruff format --check alembic/versions
+    uv run alembic downgrade base
+    find alembic/versions -name '*.py' -delete
+  )
+else
+  step "Initial migration: skipped (set CHECK_DATABASE_URL to a disposable Postgres database)"
+fi
+
 step "Frontend"
 (
   cd frontend
