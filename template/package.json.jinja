@@ -17,7 +17,7 @@
   },
   "lint-staged": {
     "frontend/**/*.{ts,tsx}": [
-      "bash -c 'cd frontend && eslint --fix \"$@\"' --",
+      "bash -c 'cd frontend && oxlint --type-aware --fix \"$@\"' --",
       "bash -c 'cd frontend && prettier --write \"$@\"' --"
     ],
     "frontend/**/*.{json,md,css}": [

@@ -60,7 +60,7 @@ format: ## Format backend (ruff) and frontend (prettier)
 	cd backend && uv run ruff format .
 	cd frontend && npm run format
 
-lint-frontend: ## Frontend: prettier, eslint, tsc, knip and dependency-cruiser
+lint-frontend: ## Frontend: prettier, oxlint, tsc, knip and dependency-cruiser
 	cd frontend && npm run format:check
 	cd frontend && npm run lint
 	cd frontend && npm run type-check

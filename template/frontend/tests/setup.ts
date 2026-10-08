@@ -30,8 +30,8 @@ beforeAll(async () => {
   });
 });
 
-afterEach(() => {
-  cleanup();
+afterEach(async () => {
+  await cleanup();
   worker.resetHandlers();
   resetNotesApi();
 

@@ -64,6 +64,9 @@ either is stale.
 
 ## Frontend
 
+- TypeScript 7. Lint is **oxlint** with type-aware rules (`npm run lint`,
+  config in `.oxlintrc.json`), not ESLint: typescript-eslint does not support
+  TypeScript 7. Never add ESLint or a second TypeScript version.
 - Routes live in `src/routes/` (file-based, `tsr generate` builds
   `routeTree.gen.ts`); a file prefixed with `-` is ignored by the router.
 - Module boundaries are enforced by dependency-cruiser

@@ -84,6 +84,10 @@ module.exports = {
   options: {
     doNotFollow: { path: 'node_modules' },
     tsPreCompilationDeps: true,
+    // swc, not the TypeScript compiler: dependency-cruiser cannot load
+    // TypeScript 7 yet. It still prints a "missing-typescript-transpiler"
+    // warning, but parses every .ts/.tsx file through swc.
+    parser: 'swc',
     tsConfig: { fileName: 'tsconfig.json' },
     enhancedResolveOptions: {
       exportsFields: ['exports'],

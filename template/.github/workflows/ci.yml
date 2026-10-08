@@ -33,7 +33,7 @@ jobs:
         working-directory: frontend
         run: npm run format:check
 
-      - name: Lint with ESLint
+      - name: Lint with oxlint (type-aware)
         working-directory: frontend
         run: npm run lint
 

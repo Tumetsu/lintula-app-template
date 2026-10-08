@@ -15,7 +15,7 @@ own domain. Generated projects can pull later template improvements with
 | Example module | `notes`: aggregate, command and query use cases, repository, query adapter, router, API tests, and a frontend page. No migrations: you generate the first one from your own models |
 | Frontend | Vite, React 19, TanStack Router (file-based) + TanStack Query, and your choice of **MUI** or **Tailwind CSS v4 + shadcn/ui** |
 | API contract | `backend/openapi.json` exported without a running server; orval generates typed TanStack Query hooks; CI fails when either is stale |
-| Quality | ruff, pyright (strict), import-linter, ESLint, Prettier, tsc, knip, dependency-cruiser, jscpd with ratchet thresholds, husky + lint-staged pre-commit |
+| Quality | ruff, pyright (strict), import-linter, oxlint (type-aware), Prettier, TypeScript 7, knip, dependency-cruiser, jscpd with ratchet thresholds, husky + lint-staged pre-commit |
 | Tests | pytest API tests against in-memory SQLite; Vitest browser-mode route tests in Chromium against MSW |
 | Docker | Multi-stage image: the frontend is built with Node, then served by FastAPI with the API; migrations run on start. `docker-compose.yml` adds Postgres |
 | CI | GitHub Actions: frontend, backend, duplication, and a Docker smoke test against Postgres; a weekly job opens a PR when the template has a new release |

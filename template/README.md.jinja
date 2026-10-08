@@ -83,8 +83,9 @@ full rules, `docs/agents/domain-modules.md` for adding a module, and
 | ruff | Python lint and format | `backend/pyproject.toml` |
 | pyright (strict) | Python types | `backend/pyproject.toml` |
 | import-linter | Backend layer and module boundaries | `backend/pyproject.toml` |
-| ESLint, Prettier | TypeScript lint and format | `frontend/eslint.config.js`, `frontend/.prettierrc` |
-| tsc | TypeScript types | `frontend/tsconfig.json` |
+| oxlint (type-aware, via tsgolint) | TypeScript lint | `frontend/.oxlintrc.json` |
+| Prettier | TypeScript formatting | `frontend/.prettierrc` |
+| tsc (TypeScript 7) | TypeScript types | `frontend/tsconfig.json` |
 | knip | Unused files, exports and dependencies | `frontend/knip.config.ts` |
 | dependency-cruiser | Frontend module boundaries, cycles | `frontend/.dependency-cruiser.cjs` |
 | jscpd | Copy-paste duplication (ratchet threshold) | `backend/.jscpd.json`, `frontend/.jscpd.json` |

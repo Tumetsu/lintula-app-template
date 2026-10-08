@@ -1,6 +1,6 @@
 #!/bin/bash
 # PostToolUse hook: format and check a file after Edit/Write.
-# Backend uses ruff + pyright through uv; frontend uses prettier + eslint
+# Backend uses ruff + pyright through uv; frontend uses prettier + oxlint
 # through npm. Tools must run with the right working directory: bare
 # `ruff`/`pyright` are not on PATH.
 
@@ -15,7 +15,7 @@ if [[ "$file_path" == "$root/backend/"*.py ]]; then
 fi
 
 if [[ "$file_path" == "$root/frontend/"* && "$file_path" =~ \.(ts|tsx)$ ]]; then
-  (cd "$root/frontend" && npx prettier --write "$file_path" && npx eslint "$file_path")
+  (cd "$root/frontend" && npx prettier --write "$file_path" && npx oxlint --type-aware "$file_path")
 fi
 
 exit 0

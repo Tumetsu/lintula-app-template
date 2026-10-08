@@ -54,8 +54,8 @@ Ruff's `TID251` bans `unittest.mock` everywhere else. Stub external boundaries
 - `.test.ts` is pure logic, run in node. `.test.tsx` renders, in real Chromium.
 - A rendering test drives a real route with `renderApp` from
   `@tests/harness/renderApp`, against MSW handlers in `tests/msw/`. Rendering a
-  component on its own is allowed only in the directories listed in
-  `COMPONENT_TIER` in `eslint.config.js`.
+  component on its own is allowed only in the component tier: the directories
+  in the last `overrides` entry of `.oxlintrc.json` (`src/hooks/` by default).
 - Query by role and accessible name (`getByRole('button', { name: 'Add note' })`).
   If an element has no accessible name, give it one in `src/`.
 - Never sleep. Wait for a state with `expect.element` or `expect.poll`.
