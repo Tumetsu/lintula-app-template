@@ -1,5 +1,6 @@
-import type { NoteListItem, NoteRequest } from '@/api/generated/model';
 import { http, HttpResponse } from 'msw';
+
+import type { NoteListItem, NoteRequest } from '@/api/generated/model';
 
 /**
  * An in-memory notes API, so a test can create a note and see the list change

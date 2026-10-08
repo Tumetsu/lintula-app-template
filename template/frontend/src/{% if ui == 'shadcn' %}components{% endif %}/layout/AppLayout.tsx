@@ -1,5 +1,6 @@
-import { APP_NAME } from '@/lib/appInfo';
 import { Outlet } from '@tanstack/react-router';
+
+import { APP_NAME } from '@/lib/appInfo';
 
 /** Page chrome around every route. */
 export function AppLayout() {

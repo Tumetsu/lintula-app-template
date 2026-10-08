@@ -1,6 +1,7 @@
-import { APP_NAME } from '@/lib/appInfo';
 import { AppBar, Container, Toolbar, Typography } from '@mui/material';
 import { Outlet } from '@tanstack/react-router';
+
+import { APP_NAME } from '@/lib/appInfo';
 
 /** Page chrome around every route. */
 export function AppLayout() {

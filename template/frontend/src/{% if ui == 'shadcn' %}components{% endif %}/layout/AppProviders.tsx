@@ -1,4 +1,5 @@
 import '@/index.css';
+
 import type { ReactNode } from 'react';
 
 /**

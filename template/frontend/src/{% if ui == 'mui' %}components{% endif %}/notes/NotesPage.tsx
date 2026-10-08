@@ -1,4 +1,3 @@
-import { useNotes } from '@/hooks/useNotes';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {
   Alert,
@@ -15,6 +14,8 @@ import {
   Typography,
 } from '@mui/material';
 import { useState, type FormEvent } from 'react';
+
+import { useNotes } from '@/hooks/useNotes';
 
 /** The example page: create, list and delete notes. Replace it with your own. */
 export function NotesPage() {

@@ -7,5 +7,7 @@
   "useTabs": false,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "plugins": ["prettier-plugin-organize-imports"]
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
+  "importOrder": ["<BUILTIN_MODULES>", "<THIRD_PARTY_MODULES>", "", "^@/", "^@tests/", "", "^[.]"],
+  "importOrderTypeScriptVersion": "5.0.0"
 }

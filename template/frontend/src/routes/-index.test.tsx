@@ -1,6 +1,7 @@
+import { describe, expect, test } from 'vitest';
+
 import { renderApp } from '@tests/harness/renderApp';
 import { seedNotes } from '@tests/msw/notesApi';
-import { describe, expect, test } from 'vitest';
 
 describe('notes page', () => {
   test('lists the stored notes', async () => {

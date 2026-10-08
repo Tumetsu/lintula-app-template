@@ -1,11 +1,12 @@
+import { Loader2, Trash2 } from 'lucide-react';
+import { useState, type FormEvent } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useNotes } from '@/hooks/useNotes';
-import { Loader2, Trash2 } from 'lucide-react';
-import { useState, type FormEvent } from 'react';
 
 /** The example page: create, list and delete notes. Replace it with your own. */
 export function NotesPage() {

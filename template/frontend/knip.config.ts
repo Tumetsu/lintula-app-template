@@ -16,6 +16,8 @@ const config: KnipConfig = {
   ignoreDependencies: [
     // Loaded by the Vitest browser runner, never imported by our own code.
     '@vitest/browser',
+    // The parser dependency-cruiser loads (`parser: 'swc'` in .dependency-cruiser.cjs).
+    '@swc/core',
   ],
 };
 

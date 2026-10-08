@@ -15,6 +15,9 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.5.1"
   },
+  "overrides": {
+    "typescript": "^7.0.2"
+  },
   "lint-staged": {
     "frontend/**/*.{ts,tsx}": [
       "bash -c 'cd frontend && oxlint --type-aware --fix \"$@\"' --",

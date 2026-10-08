@@ -1,6 +1,7 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import type { ReactNode } from 'react';
+
 import { theme } from './theme';
 
 /** UI-library providers, shared by `main.tsx` and the test harness. */

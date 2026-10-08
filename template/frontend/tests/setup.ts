@@ -1,6 +1,8 @@
-import { API_BASE_URL } from '@/api/base-url';
 import { afterAll, afterEach, beforeAll } from 'vitest';
 import { cleanup } from 'vitest-browser-react';
+
+import { API_BASE_URL } from '@/api/base-url';
+
 import { resetNotesApi } from './msw/notesApi';
 import { worker } from './msw/worker';
 

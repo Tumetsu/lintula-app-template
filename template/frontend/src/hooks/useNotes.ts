@@ -1,10 +1,11 @@
+import { useQueryClient } from '@tanstack/react-query';
+
 import {
   getListNotesQueryKey,
   useCreateNote,
   useDeleteNote,
   useListNotes,
 } from '@/api/generated/notes/notes';
-import { useQueryClient } from '@tanstack/react-query';
 
 /**
  * The notes list and the mutations that change it, independent of how they

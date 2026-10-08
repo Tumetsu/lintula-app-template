@@ -1,8 +1,9 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createMemoryHistory, createRouter, RouterProvider } from '@tanstack/react-router';
+import { render } from 'vitest-browser-react';
+
 import { AppProviders } from '@/components/layout/AppProviders';
 import { routerOptions } from '@/router';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { RouterProvider, createMemoryHistory, createRouter } from '@tanstack/react-router';
-import { render } from 'vitest-browser-react';
 
 /**
  * Renders the whole app at `path`: the real route tree and the same providers
