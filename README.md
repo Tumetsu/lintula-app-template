@@ -29,7 +29,7 @@ Requirements: [uv](https://docs.astral.sh/uv/), Node.js 24, git, and Docker for
 the database.
 
 ```bash
-uvx copier copy --trust gh:<org>/ai-web-project-template my-app
+uvx copier copy --trust gh:Tumetsu/lintula-app-template my-app
 ```
 
 Copier asks:

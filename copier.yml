@@ -1,5 +1,5 @@
 # Copier template: full-stack web app (FastAPI + React) in the layout crossbill uses.
-# Render with `uvx copier copy --trust gh:<org>/ai-web-project-template my-app`.
+# Render with `uvx copier copy --trust gh:Tumetsu/lintula-app-template my-app`.
 # See README.md for the questions, the update flow and how the template is tested.
 
 _min_copier_version: "9.4.0"
