@@ -3,7 +3,7 @@
 Generated projects update between these releases with `copier update`. Each
 release is a git tag of the same name.
 
-## Unreleased
+## v0.2.0
 
 - The Docker image runs with `ENVIRONMENT=production` by default (JSON logs,
   API docs off, HSTS on). Override it with `-e ENVIRONMENT=development`.
@@ -17,7 +17,11 @@ release is a git tag of the same name.
 - Frontend on TypeScript 7, linted with oxlint (type-aware, via tsgolint)
   instead of ESLint + typescript-eslint, which does not support TypeScript 7.
   The test-timeout `no-restricted-syntax` rule is gone; oxlint has no
-  equivalent. dependency-cruiser parses with swc.
+  equivalent. dependency-cruiser parses with swc. A root npm override keeps a
+  single TypeScript version, and imports are sorted by
+  `@ianvs/prettier-plugin-sort-imports` (organize-imports needs the TypeScript
+  6 API).
+- New Alembic migrations are lint-fixed as they are generated.
 
 ## v0.1.0
 
