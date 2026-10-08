@@ -3,6 +3,11 @@
 Generated projects update between these releases with `copier update`. Each
 release is a git tag of the same name.
 
+## Unreleased
+
+- The Docker image runs with `ENVIRONMENT=production` by default (JSON logs,
+  API docs off, HSTS on). Override it with `-e ENVIRONMENT=development`.
+
 ## v0.1.0
 
 First release, extracted from crossbill.
